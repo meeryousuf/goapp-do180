@@ -16,7 +16,7 @@ spec:
     type: Git
     git:
       # IMPORTANT: Replace this with the URL of your Git repository containing main.go and Dockerfile.
-      uri: "https://github.com/Jibbscript/goapp-do180.git"
+      uri: "https://github.com/meeryousuf/goapp-do180"
   strategy:
     # We use the 'Docker' strategy to build from the Dockerfile in the source repo.
     type: Docker

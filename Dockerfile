@@ -2,7 +2,7 @@
 
 # ---- Builder Stage ----
 # This stage compiles the Go application.
-FROM [registry.access.redhat.com/ubi8/go-toolset:1.19](https://registry.access.redhat.com/ubi8/go-toolset:1.19) AS builder
+FROM https://registry.access.redhat.com/ubi8/go-toolset:1.19 AS builder
 
 # Set the working directory inside the container.
 WORKDIR /src
@@ -17,7 +17,7 @@ RUN CGO_ENABLED=0 go build -o /app .
 
 # ---- Runner Stage ----
 # This stage creates the final, minimal image.
-FROM [registry.access.redhat.com/ubi8/ubi-minimal:latest](https://registry.access.redhat.com/ubi8/ubi-minimal:latest)
+FROM https://registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 # Copy the compiled binary from the 'builder' stage.
 COPY --from=builder /app /app
