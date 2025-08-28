@@ -1,0 +1,26 @@
+# buildconfig.yaml
+# This BuildConfig defines how to build the Go application from source.
+
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: go-http-server
+  labels:
+    app: go-http-server
+spec:
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange: {}
+  source:
+    type: Git
+    git:
+      # IMPORTANT: Replace this with the URL of your Git repository containing main.go and Dockerfile.
+      uri: "https://github.com/Jibbscript/goapp-do180.git"
+  strategy:
+    # We use the 'Docker' strategy to build from the Dockerfile in the source repo.
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "go-http-server:latest"
